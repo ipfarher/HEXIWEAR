@@ -1,7 +1,7 @@
 /**
- * \file flashlight_objects.c
+ * \file BSA_private.h
  * \version 1.00
- * \brief this file contains flashlight app GUI related objects
+ * \brief this file contains BSA app related private objects' declarations and constants
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -35,36 +35,18 @@
  * Project HEXIWEAR, 2015
  */
 
+#pragma once
+
 #include "gui_driver.h"
-#include "screens_common.h"
-#include "flashlight_private.h"
+#include <stdint.h>
 
- /** flashlight app screen */
- guiScreen_t flashlightScreen =
- {
-   .navigation =
-   {
-           .up     = &gui_motionControl_coverScreen,
-           .down   = &BSAScreen,
-           .left   = &appsScreen,
-           .right  = NULL
-   },
+#define BSA_STACK_SIZE ( 0x400 )
+#define BSA_PRIO       ( HEXIWEAR_APP_PRIO )
 
-   .image = flashlight_screen_bmp,
+extern guiImage_t
+     BSA_icon;
 
-   .initFunction        = flashlight_Init,
-   .createTaskFunction  = flashlight_CreateTasks,
-   .destroyTaskFunction = flashlight_DestroyTasks
- };
-
- guiImage_t
-     flashlight_icon =
-     {
-         .dynamicArea =
-         {
-             .xCrd   = 24,
-             .yCrd   = 23
-         },
-
-         .img = flashlight_off_bmp
-     };
+extern const uint8_t
+    BSA_screen_bmp[18438],
+    BSA_stop_bmp[4806],
+    BSA_start_bmp[4806];

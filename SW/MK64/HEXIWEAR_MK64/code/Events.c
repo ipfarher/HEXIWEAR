@@ -42,6 +42,7 @@
 #include "watch.h"
 #include "haptic.h"
 #include "flashlight.h"
+#include "BSA.h"
 
 #ifdef __cplusplus
 extern "C" {

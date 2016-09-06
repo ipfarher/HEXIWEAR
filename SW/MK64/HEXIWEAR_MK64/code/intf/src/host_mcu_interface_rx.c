@@ -68,6 +68,7 @@
 #include "error.h"
 
 #include "flashlight.h"
+#include "BSA.h"
 
 #include "haptic.h"
 

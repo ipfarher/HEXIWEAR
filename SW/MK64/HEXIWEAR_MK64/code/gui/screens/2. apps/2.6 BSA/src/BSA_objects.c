@@ -1,7 +1,7 @@
 /**
- * \file flashlight_objects.c
+ * \file BSA_objects.c
  * \version 1.00
- * \brief this file contains flashlight app GUI related objects
+ * \brief this file contains BSA app GUI related objects
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -37,28 +37,45 @@
 
 #include "gui_driver.h"
 #include "screens_common.h"
-#include "flashlight_private.h"
+#include "BSA_private.h"
 
- /** flashlight app screen */
- guiScreen_t flashlightScreen =
+ /** BSA app screen */
+ guiScreen_t BSAScreen =
  {
    .navigation =
    {
-           .up     = &gui_motionControl_coverScreen,
-           .down   = &BSAScreen,
+           .up     = &flashlightScreen,
+           .down   = &fitnessScreen,
            .left   = &appsScreen,
-           .right  = NULL
+           .right  = &BSAMainScreen
    },
 
-   .image = flashlight_screen_bmp,
+   .image = BSA_screen_bmp,
 
-   .initFunction        = flashlight_Init,
-   .createTaskFunction  = flashlight_CreateTasks,
-   .destroyTaskFunction = flashlight_DestroyTasks
+   .initFunction        = NULL,
+   .createTaskFunction  = NULL,
+   .destroyTaskFunction = NULL
+ };
+
+ guiScreen_t BSAMainScreen =
+ {
+   .navigation =
+   {
+           .up    = NULL,
+           .down  = NULL,
+           .left  = &BSAScreen,
+           .right = NULL
+   },
+
+   .image = BSA_screen_bmp,
+
+   .initFunction        = BSA_Init,
+   .createTaskFunction  = BSA_CreateTasks,
+   .destroyTaskFunction = BSA_DestroyTasks
  };
 
  guiImage_t
-     flashlight_icon =
+     BSA_icon =
      {
          .dynamicArea =
          {
@@ -66,5 +83,5 @@
              .yCrd   = 23
          },
 
-         .img = flashlight_off_bmp
+         .img = NULL
      };

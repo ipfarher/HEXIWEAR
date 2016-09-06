@@ -40,6 +40,7 @@
 #include "power_driver.h"
 
 #include "flashlight.h"
+#include "BSA.h"
 
 void watch_SetClock();
 

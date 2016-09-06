@@ -1,7 +1,7 @@
 /**
- * \file flashlight_objects.c
+ * \file BSA.h
  * \version 1.00
- * \brief this file contains flashlight app GUI related objects
+ * \brief this file contains BSA app related public objects' declarations and constants
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -35,36 +35,52 @@
  * Project HEXIWEAR, 2015
  */
 
+#pragma once
+
 #include "gui_driver.h"
-#include "screens_common.h"
-#include "flashlight_private.h"
+#include <stdbool.h>
 
- /** flashlight app screen */
- guiScreen_t flashlightScreen =
- {
-   .navigation =
-   {
-           .up     = &gui_motionControl_coverScreen,
-           .down   = &BSAScreen,
-           .left   = &appsScreen,
-           .right  = NULL
-   },
+//BSA Screens
+extern guiScreen_t
+	BSAScreen,
+	BSAMainScreen;
 
-   .image = flashlight_screen_bmp,
+extern task_handler_t
+	BSA_taskHandler;
 
-   .initFunction        = flashlight_Init,
-   .createTaskFunction  = flashlight_CreateTasks,
-   .destroyTaskFunction = flashlight_DestroyTasks
- };
+#define RED_LED_ON()   GPIO_DRV_ClearPinOutput( RED_LED );
+#define GREEN_LED_ON() GPIO_DRV_ClearPinOutput( GREEN_LED );
+#define BLUE_LED_ON()  GPIO_DRV_ClearPinOutput( BLUE_LED );
 
- guiImage_t
-     flashlight_icon =
-     {
-         .dynamicArea =
-         {
-             .xCrd   = 24,
-             .yCrd   = 23
-         },
+#define RED_LED_OFF()   GPIO_DRV_SetPinOutput( RED_LED );
+#define GREEN_LED_OFF() GPIO_DRV_SetPinOutput( GREEN_LED );
+#define BLUE_LED_OFF()  GPIO_DRV_SetPinOutput( BLUE_LED );
 
-         .img = flashlight_off_bmp
-     };
+#define RED_LED_TOGGLE()   GPIO_DRV_TogglePinOutput( RED_LED );
+#define GREEN_LED_TOGGLE() GPIO_DRV_TogglePinOutput( GREEN_LED );
+#define BLUE_LED_TOGGLE()  GPIO_DRV_TogglePinOutput( BLUE_LED );
+
+#define FLASH_Toggle() RED_LED_TOGGLE(); GREEN_LED_TOGGLE(); BLUE_LED_TOGGLE()
+#define FLASH_SetON() RED_LED_ON(); GREEN_LED_ON(); BLUE_LED_ON()
+#define FLASH_SetOFF() RED_LED_OFF(); GREEN_LED_OFF(); BLUE_LED_OFF()
+
+/**
+ * [BSA_Init description]
+ * @param param [description]
+ */
+void BSA_Init( void* param );
+/**
+ * [BSA_CreateTasks description]
+ * @param param [description]
+ */
+void BSA_CreateTasks( void* param );
+/**
+ * [BSA_DestroyTasks description]
+ * @param param [description]
+ */
+void BSA_DestroyTasks( void* param );
+
+/**
+ * check if the app is active
+ */
+bool BSA_isBSAOn();

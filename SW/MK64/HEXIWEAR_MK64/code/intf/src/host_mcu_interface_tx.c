@@ -52,6 +52,7 @@
 #if defined( HEXIWEAR_DEBUG )
 #include "DEBUG_UART.h"
 #include "flashlight.h"
+#include "BSA.h"
 #endif
 
 #include "error.h"

@@ -50,6 +50,7 @@
 
 #include "notifications.h"
 #include "flashlight.h"
+#include "BSA.h"
 
 #include "host_mcu_interface.h"
 #include "gui_driver.h"

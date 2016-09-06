@@ -38,6 +38,7 @@
 #include "error.h"
 #include "HEXIWEAR_driver.h"
 #include "flashlight.h"
+#include "BSA.h"
 
 void catch( uint8_t errorCode )
 {
