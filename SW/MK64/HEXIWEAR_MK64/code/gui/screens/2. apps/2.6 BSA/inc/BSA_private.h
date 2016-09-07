@@ -48,5 +48,5 @@ extern guiImage_t
 
 extern const uint8_t
     BSA_screen_bmp[18438],
-    BSA_stop_bmp[4806],
-    BSA_start_bmp[4806];
+    BSA_off_bmp[4806],
+    BSA_on_bmp[4806];

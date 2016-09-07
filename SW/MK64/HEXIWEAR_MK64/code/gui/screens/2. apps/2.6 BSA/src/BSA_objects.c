@@ -52,7 +52,7 @@
 
    .image = BSA_screen_bmp,
 
-   .initFunction        = NULL,
+   .initFunction        = BSA_Init_Icon,
    .createTaskFunction  = NULL,
    .destroyTaskFunction = NULL
  };
@@ -83,5 +83,5 @@
              .yCrd   = 23
          },
 
-         .img = NULL
+         .img = BSA_off_bmp
      };

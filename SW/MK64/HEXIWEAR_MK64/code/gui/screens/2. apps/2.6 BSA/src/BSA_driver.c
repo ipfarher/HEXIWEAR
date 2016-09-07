@@ -41,12 +41,12 @@
 #include "haptic.h"
 #include "GPIO.h"
 
-//#define SetFlashOFF() isBSAOn = false; BSA_icon.img = BSA_stop_bmp; FLASH_SetOFF()
-//#define SetFlashON()  isBSAOn = true;  BSA_icon.img = BSA_start_bmp;  FLASH_SetON()
+#define SetFlashOFF() isBSAOn = false; BSA_icon.img = BSA_off_bmp; FLASH_SetOFF()
+#define SetFlashON()  isBSAOn = true;  BSA_icon.img = BSA_on_bmp;  FLASH_SetON()
 
 
-#define SetFlashOFF() isBSAOn = false; FLASH_SetOFF()
-#define SetFlashON()  isBSAOn = true;  FLASH_SetON()
+//#define SetFlashOFF() isBSAOn = false; FLASH_SetOFF()
+//#define SetFlashON()  isBSAOn = true;  FLASH_SetON()
 /** intern functions declarations */
 
 static void BSA_ToggleTask( task_param_t param );
@@ -71,6 +71,10 @@ void BSA_Init( void* param )
     GuiDriver_RegisterForNavigation( GUI_NAVIGATION_RIGHT );
 }
 
+void BSA_Init_Icon( void* param )
+{
+    GuiDriver_ImageAddToScr( &BSA_icon );
+}
 /**
  * create the app task
  * @param param optional parameter

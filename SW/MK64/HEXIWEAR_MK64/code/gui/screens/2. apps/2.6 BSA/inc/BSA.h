@@ -73,6 +73,10 @@ void BSA_Init( void* param );
  * [BSA_CreateTasks description]
  * @param param [description]
  */
+
+void BSA_Init_Icon( void* param );
+
+
 void BSA_CreateTasks( void* param );
 /**
  * [BSA_DestroyTasks description]
